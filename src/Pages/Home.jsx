@@ -1,49 +1,43 @@
-import {
-  faFacebook,
-  faInstagram,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 
 import React from "react";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 export const Home = () => {
   return (
-    <div className="w-full min-h-screen ">
-      <div className="bg-[url('/home.png')] bg-cover bg-center w-full">
-        <div className="relative w-full min-h-screen">
+    <div className="w-full h-screen ">
+      <div className="bg-cover bg-center w-full">
+        <div className="w-full h-screen">
           {/* Header Section */}
-          <header className="flex justify-between items-center w-full py-4 px-8 bg-[#07001f]">
-            <img className=" h-8" alt="Career Connect Logo" src="/logo.png" />
-            <div className="flex gap-5">
-              <button className="bg-[#204299] text-white text-lg px-2 py-1 rounded-md">
-                Admin Login
-              </button>
-              <button className="bg-[#204299] text-white text-lg px-2 py-1 rounded-md">
-                Register/Login
-              </button>
-            </div>
-          </header>
-
+          <Header />
           {/* Main Content */}
           <main className="w-full flex flex-col items-center bg-[#000236]">
             {/* Section 1 */}
-            <section className="w-full flex justify-between relative items-center py-12 px-14 ">
-              <div className="flex  flex-col space-y-4 md:ml-8 text-white">
-                <p className="text-3xl">
+            <section className="w-full flex justify-between relative items-center py-12 px-14 sm:px-14">
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 100 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="flex flex-col space-y-4 md:ml-8 text-white"
+              >
+                <p className=" text-sm sm:text-3xl">
                   <span className="text-[#9d88f2]">
                     Can’t Find Best Employees
                   </span>
                   <br />
                   <span>Let us help you</span>
                 </p>
-                <button className="bg-[#0c2a79] mt-3 text-xl px-5 py-3 rounded-md">
+                <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
                   Sign in as Recruiter
                 </button>
-              </div>
+              </motion.div>
 
-              <img
-                className=" w-1/3 h-auto"
+              <motion.img
+                initial={{ x: 50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 100 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className=" w-1/3 sm:1/3 h-auto"
                 alt="Isometric view of colleagues discussing the project in VR"
                 src="/img_1.png"
               />
@@ -52,69 +46,106 @@ export const Home = () => {
             <img src="/Vector_2.png" className="w-full h-1/4" alt="" />
 
             {/* Section 2 */}
-            <section className="w-full  flex justify-between flex-col md:flex-row items-center py-12 px-32 bg-[#000236]">
-              <img
-                className=" w-1/3 h-auto"
+            <section className="w-full flex justify-between relative items-center py-12 px-14 sm:px-14">
+              <motion.img
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 100 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className=" w-1/3 sm:1/3 h-auto"
                 alt="Isometric view of man working online"
                 src="/img_2.png"
               />
-              <div className="flex flex-col space-y-4 md:ml-8 text-white">
-                <p className="text-3xl">
+              <motion.div
+                initial={{ x: 50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 100 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="flex flex-col space-y-4 md:ml-8 text-white"
+              >
+                <p className=" text-sm sm:text-3xl">
                   <span className="text-[#9d88f2]">Can’t Find A JOB</span>
                   <br />
                   <span>Let us help you</span>
                 </p>
-                <button className="bg-[#0c2a79] mt-3 text-xl px-5 py-3 rounded-md">
+                <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
                   Sign in as Job Seeker
                 </button>
-              </div>
+              </motion.div>
             </section>
             <img src="/Vector_1.png" className="w-full h-1/3" alt="" />
             <img src="/Vector_2.png" className="w-full h-1/4" alt="" />
             {/* Section 3 */}
-            <section className="w-full  flex justify-between flex-col md:flex-row items-center py-12 px-20 bg-[#000236]">
+            <section className="w-full  flex flex-wrap justify-between flex-col md:flex-row items-center py-12 px-20 bg-[#000236]">
               <div className="text-center text-white mb-12">
-                <h2 className="text-4xl">
+                <motion.h2
+                  initial={{ y: -50, opacity: 0 }}
+                  whileInView={{ y: 12, opacity: 100 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className=" text-sm sm:text-3xl"
+                >
                   We Provide{" "}
                   <span className="text-[#9d88f2]">Best In-Class</span> Job Post
                   and Employees
-                </h2>
+                </motion.h2>
                 <div className="part_1 flex justify-center justify-between mt-14">
-                  <div className="flex justify-between items-center">
-                    <p className="text-xl mt-4 font-semibold">
+                  <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 12, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="flex justify-between items-center"
+                  >
+                    <p className=" text-xs	 sm:text-xl mt-4 font-semibold">
                       • Admin will verify each job post
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <img
-                    className="w-1/3 h-auto"
+                  <motion.img
+                    initial={{ x: 50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className=" w-1/4 sm:1/3 h-auto"
                     alt="Isometric view of colleagues discussing work project"
                     src="/img_3.png"
                   />
                 </div>
                 <div className="part_2 flex justify-center justify-between mt-14">
-                  <img
-                    className="w-1/3 h-auto"
+                  <motion.img
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 12, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className=" w-1/4 sm:1/3 h-auto"
                     alt="Notification"
                     src="/img_4.png"
                   />
-                  <div className="flex justify-between items-center">
-                    <p className="text-xl mt-4 font-semibold">
+                  <motion.div
+                    initial={{ x: 50, opacity: 0 }}
+                    whileInView={{ x: 25, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="flex justify-between items-center"
+                  >
+                    <p className=" text-xs	 sm:text-xl mt-4 font-semibold">
                       • Employees will get notification whether they are
                       selected or rejected
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="part_3 flex justify-center justify-between mt-14">
-                  <div className="flex justify-between items-center">
-                    <p className="text-xl mt-4 font-semibold">
+                  <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: -10, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="flex justify-between items-center"
+                  >
+                    <p className=" text-xs sm:text-xl mt-4 font-semibold">
                       • Recruiter can select employees based on their skill and
                       send them notification if they are selected or not
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <img
-                    className="w-1/3 h-auto"
+                  <motion.img
+                    initial={{ x: 50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 100 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className=" w-1/4 sm:1/3 h-auto"
                     alt="Woman recruiter"
                     src="/img_5.png"
                   />
@@ -123,36 +154,7 @@ export const Home = () => {
             </section>
 
             {/* Footer */}
-            <footer className="w-full flex flex-col items-center bg-[#07001f] text-white py-12">
-              <div className="flex justify-around w-full max-w-5xl">
-                <div className="text-center">
-                  <img
-                    className="w-40 h-auto"
-                    alt="Career connect high"
-                    src="/logo.png"
-                  />
-                  <p className="text-xl font-bold mt-4">
-                    Trusted Professional Reliable
-                  </p>
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-light mb-4">Follow us on</h3>
-                  <div className="flex flex-col gap-5">
-                    <FontAwesomeIcon icon={faInstagram} className="fa-lg	" />{" "}
-                    <FontAwesomeIcon icon={faXTwitter} className="fa-lg	" />{" "}
-                    <FontAwesomeIcon icon={faFacebook} className="fa-lg	" />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-semibold mb-4">Pages</h3>
-                  <div className="space-y-2">
-                    <p className=" text-xl font-light">Register</p>
-                    <p className=" text-xl font-light">Login</p>
-                    <p className=" text-xl font-light">Job Page</p>
-                  </div>
-                </div>
-              </div>
-            </footer>
+            <Footer />
           </main>
         </div>
       </div>
