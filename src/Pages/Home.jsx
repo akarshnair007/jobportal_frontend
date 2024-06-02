@@ -89,7 +89,7 @@ export const Home = () => {
                 <div className="part_1 flex justify-center justify-between mt-14">
                   <motion.div
                     initial={{ x: -50, opacity: 0 }}
-                    whileInView={{ x: -1, opacity: 100 }}
+                    whileInView={{ x: -4, opacity: 100 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
                     className="flex justify-between items-center"
                   >
