@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -28,9 +29,11 @@ export const Home = () => {
                   <br />
                   <span>Let us help you</span>
                 </p>
-                <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
-                  Sign in as Recruiter
-                </button>
+                <Link to={"/recruiter_register"}>
+                  <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
+                    Sign in as Recruiter
+                  </button>
+                </Link>
               </motion.div>
 
               <motion.img
@@ -66,9 +69,11 @@ export const Home = () => {
                   <br />
                   <span>Let us help you</span>
                 </p>
-                <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
-                  Sign in as Job Seeker
-                </button>
+                <Link to={"/job_seeker_register"}>
+                  <button className="bg-[#0c2a79] mt-3 text-sm px-2 sm:px-5 py-2 sm:py-2 sm:text-xl rounded-md">
+                    Sign in as Job Seeker
+                  </button>
+                </Link>
               </motion.div>
             </section>
             <img src="/Vector_1.png" className="w-full h-1/3" alt="" />
