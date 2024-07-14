@@ -138,15 +138,13 @@ const Admin_Page = () => {
                   </tr>
                 ))
               ) : (
-                <tbody>
-                  <tr>
-                    <td colSpan="3">
-                      <h1 className="font-bold text-center text-2xl text-slate-800 py-10">
-                        No Job Seekers
-                      </h1>
-                    </td>
-                  </tr>
-                </tbody>
+                <tr>
+                  <td colSpan="3" className="text-center py-10">
+                    <h1 className="font-bold text-2xl text-slate-800">
+                      No Job-Seekers
+                    </h1>
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
@@ -191,15 +189,13 @@ const Admin_Page = () => {
                   </tr>
                 ))
               ) : (
-                <tbody>
-                  <tr>
-                    <td colSpan="3">
-                      <h1 className="font-bold text-center text-2xl text-slate-800 py-10">
-                        No Job Seekers
-                      </h1>
-                    </td>
-                  </tr>
-                </tbody>
+                <tr>
+                  <td colSpan="4" className="text-center py-10">
+                    <h1 className="font-bold text-2xl text-slate-800">
+                      No Recruiters
+                    </h1>
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
