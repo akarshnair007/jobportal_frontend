@@ -29,6 +29,9 @@ const Recruiter_Register = () => {
           organization_name: "",
         });
         toast.success("Registration Successfull");
+        setTimeout(() => {
+          navigate("/recruiter_login");
+        }, 4000);
       } else {
         console.log(result);
         toast.warning("Something went wrong");

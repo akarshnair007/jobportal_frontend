@@ -122,20 +122,26 @@ const Admin_Page = () => {
               </tr>
             </thead>
             <tbody>
-              {jobSeeker.map((item) => (
-                <tr key={item.id}>
-                  <td className="py-2 px-4 border-b">{item.username}</td>
-                  <td className="py-2 px-4 border-b">{item.email}</td>
-                  <td className="py-2 px-4 border-b text-center">
-                    <button
-                      onClick={(e) => deleteJobSeekerHandler(e, item._id)}
-                      className="ms-2 px-5 py-1 bg-black text-white text-md rounded-3xl font-semibold"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {jobSeeker.length > 0 ? (
+                jobSeeker.map((item) => (
+                  <tr key={item.id}>
+                    <td className="py-2 px-4 border-b">{item.username}</td>
+                    <td className="py-2 px-4 border-b">{item.email}</td>
+                    <td className="py-2 px-4 border-b text-center">
+                      <button
+                        onClick={(e) => deleteJobSeekerHandler(e, item._id)}
+                        className="ms-2 px-5 py-1 bg-black text-white text-md rounded-3xl font-semibold"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <h1 className="font-bold text-2xl text-slate-800">
+                  No Job Seekers
+                </h1>
+              )}
             </tbody>
           </table>
         </div>
@@ -160,23 +166,29 @@ const Admin_Page = () => {
               </tr>
             </thead>
             <tbody>
-              {recruiter.map((item) => (
-                <tr key={item.id}>
-                  <td className="py-2 px-4 border-b">{item.username}</td>
-                  <td className="py-2 px-4 border-b">{item.email}</td>
-                  <td className="py-2 px-4 border-b">
-                    {item.organizationName}
-                  </td>
-                  <td className="py-2 px-4 border-b text-center">
-                    <button
-                      onClick={(e) => deleteRecruiterHandler(e, item._id)}
-                      className="ms-2 px-5 py-1 bg-black text-white text-md rounded-3xl font-semibold"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {recruiter.length > 0 ? (
+                recruiter.map((item) => (
+                  <tr key={item.id}>
+                    <td className="py-2 px-4 border-b">{item.username}</td>
+                    <td className="py-2 px-4 border-b">{item.email}</td>
+                    <td className="py-2 px-4 border-b">
+                      {item.organizationName}
+                    </td>
+                    <td className="py-2 px-4 border-b text-center">
+                      <button
+                        onClick={(e) => deleteRecruiterHandler(e, item._id)}
+                        className="ms-2 px-5 py-1 bg-black text-white text-md rounded-3xl font-semibold"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <h1 className="font-bold text-2xl text-slate-800">
+                  No Job Seekers
+                </h1>
+              )}
             </tbody>
           </table>
         </div>

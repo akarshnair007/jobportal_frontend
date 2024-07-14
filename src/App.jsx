@@ -25,9 +25,9 @@ function App() {
       const timer = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("hasLoadedBefore", "true");
-      }, 6000); // Wait for the loader to complete
+      }, 6000);
 
-      return () => clearTimeout(timer); // Clean up the timer
+      return () => clearTimeout(timer);
     } else {
       setIsLoading(false);
     }
