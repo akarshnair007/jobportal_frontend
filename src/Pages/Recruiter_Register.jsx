@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { recruiterRegisterAPI } from "../Services/AllApi";
@@ -12,6 +12,8 @@ const Recruiter_Register = () => {
     password: "",
     organization_name: "",
   });
+
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
