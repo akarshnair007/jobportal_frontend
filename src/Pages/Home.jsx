@@ -128,8 +128,8 @@ export const Home = () => {
                     className="flex justify-between items-center"
                   >
                     <p className=" text-xs	 sm:text-xl mt-4 font-semibold">
-                      • Employees will get notification whether they are
-                      selected or rejected
+                      • Employees will get Email whether they are selected or
+                      rejected
                     </p>
                   </motion.div>
                 </div>
@@ -141,8 +141,8 @@ export const Home = () => {
                     className="flex justify-between items-center"
                   >
                     <p className=" text-xs sm:text-xl mt-4 font-semibold">
-                      • Recruiter can select employees based on their skill and
-                      send them notification if they are selected or not
+                      • Recruiter can select employees based on their resume and
+                      send them email if they are selected or not
                     </p>
                   </motion.div>
 

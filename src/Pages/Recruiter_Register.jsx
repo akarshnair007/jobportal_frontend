@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { recruiterRegisterAPI } from "../Services/AllApi";
 
 const Recruiter_Register = () => {
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    email: "",
+    password: "",
+    organization_name: "",
+  });
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const { username, email, password, organization_name } = userDetails;
+    if (!username || !email || !password || !organization_name) {
+      toast.info("Please fill the form");
+    } else {
+      const result = await recruiterRegisterAPI(userDetails);
+      if (result.status == 200) {
+        console.log(result);
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+          organization_name: "",
+        });
+        toast.success("Registration Successfull");
+      } else {
+        console.log(result);
+        toast.warning("Something went wrong");
+      }
+    }
+  };
+
   return (
     <div className="w-full h-screen bg-[#000236] overflow-y-hidden">
       <Header />
@@ -23,7 +56,14 @@ const Recruiter_Register = () => {
               <input
                 type="text"
                 placeholder="Enter username"
+                value={userDetails.username}
                 className=" w-32 sm:w-80 rounded-lg py-1 px-2 sm:py-3 sm:px-3 outline-none border-2 bg-slate-500 text-white border-slate-700"
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    username: e.target.value,
+                  })
+                }
               />
             </div>
 
@@ -32,15 +72,22 @@ const Recruiter_Register = () => {
                 className=" text-md sm:text-2xl text-slate-600 font-semibold"
                 htmlFor=""
               >
-                Email:
+                Email :
               </label>{" "}
               <input
                 type="email"
                 placeholder="Enter Email"
-                className=" w-32 sm:w-80 rounded-lg py-1 px-2 sm:py-3 sm:px-3 outline-none border-2 bg-slate-500 text-white border-slate-700"
+                value={userDetails.email}
+                className=" w-32 sm:ms-3 sm:w-80 rounded-lg py-1 px-2 sm:py-3 sm:px-3 outline-none border-2 bg-slate-500 text-white border-slate-700"
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    email: e.target.value,
+                  })
+                }
               />
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-5">
               <label
                 className=" text-md sm:text-2xl text-slate-600 font-semibold"
                 htmlFor=""
@@ -50,23 +97,40 @@ const Recruiter_Register = () => {
               <input
                 type="password"
                 placeholder="Enter Password"
+                value={userDetails.password}
                 className=" w-32 sm:w-80 rounded-lg py-1 px-2 sm:py-3 sm:px-3 outline-none border-2 bg-slate-500 text-white border-slate-700"
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    password: e.target.value,
+                  })
+                }
               />
             </div>
             <div className="flex gap-2">
               <label
-                className=" text-sm sm:text-2xl text-slate-600 font-semibold whitespace-nowrap"
+                className=" text-sm mt-1 sm:text-2xl text-slate-600 font-semibold whitespace-nowrap"
                 htmlFor=""
               >
                 Organization Name:
               </label>
               <input
                 type="text"
-                placeholder={`Enter Organization Name`}
+                placeholder="Enter Organization Name"
+                value={userDetails.organization_name}
                 className=" w-28 sm:w-80 rounded-lg py-1 px-2 sm:py-3 sm:px-3 outline-none border-2 bg-slate-500 text-white border-slate-700"
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    organization_name: e.target.value,
+                  })
+                }
               />
             </div>
-            <button className=" px-10 py-2 sm:py-3 rounded-lg text-md sm:text-xl font-semibold bg-[#214299] text-white">
+            <button
+              className=" px-10 py-2 sm:py-3 rounded-lg text-md sm:text-xl font-semibold bg-[#214299] text-white"
+              onClick={(e) => submitHandler(e)}
+            >
               Submit
             </button>
             <p className=" font-semibold">
@@ -78,6 +142,7 @@ const Recruiter_Register = () => {
           </form>
         </div>
       </div>
+      <ToastContainer theme="dark" autoClose={2000} position="top-right" />
     </div>
   );
 };
