@@ -138,7 +138,7 @@ const Admin_Page = () => {
                   </tr>
                 ))
               ) : (
-                <h1 className="font-bold text-2xl text-slate-800">
+                <h1 className="font-bold text-center text-2xl text-slate-800">
                   No Job Seekers
                 </h1>
               )}
@@ -185,7 +185,7 @@ const Admin_Page = () => {
                   </tr>
                 ))
               ) : (
-                <h1 className="font-bold text-2xl text-slate-800">
+                <h1 className="font-bold text-center text-2xl text-slate-800">
                   No Job Seekers
                 </h1>
               )}
