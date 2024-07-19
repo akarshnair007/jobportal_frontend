@@ -14,6 +14,7 @@ import JobSeeker_profile from "./Pages/JobSeeker_profile";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import Loader from "./Pages/Loader";
+import Construction from "./Pages/Construction";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -46,6 +47,8 @@ function App() {
           <Route path="/admin_login" element={<Login_Admin />} />
           <Route path="/job_seeker_login" element={<Login_JobSeeker />} />
           <Route path="/recruiter_login" element={<Recruiter_Login />} />
+          <Route path="/not_avaiable" element={<Construction />} />
+
           <Route
             path="/recruiter_page"
             element={isAuthenticated ? <Recruiter_Page /> : <Recruiter_Login />}

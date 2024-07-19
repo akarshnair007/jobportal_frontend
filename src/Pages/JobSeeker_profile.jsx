@@ -24,7 +24,7 @@ const JobSeeker_profile = () => {
   const updateHandler = async (e) => {
     e.preventDefault();
     const { username, email, github, profile, resume } = userDetails;
-    if (!username || !email || !github || !resume) {
+    if (!username && !email && !github && !resume && !profile) {
       toast.info("Please fill the form");
     } else {
       const reqBody = new FormData();

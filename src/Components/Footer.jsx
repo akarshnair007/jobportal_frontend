@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const iconVariants = {
   inital: { opacity: 0, y: -20 },
@@ -101,33 +102,41 @@ const Footer = () => {
             Pages
           </motion.h3>
           <div className="space-y-2">
-            <motion.p
-              custom={1}
-              initial="inital"
-              whileInView="animate"
-              variants={pageVariants}
-              className=" text-xs sm:text-xl font-light"
-            >
-              Register
-            </motion.p>
-            <motion.p
-              custom={2}
-              initial="inital"
-              whileInView="animate"
-              variants={pageVariants}
-              className=" text-xs sm:text-xl font-light"
-            >
-              Login
-            </motion.p>
-            <motion.p
-              custom={3}
-              initial="inital"
-              whileInView="animate"
-              variants={pageVariants}
-              className=" text-xs sm:text-xl font-light"
-            >
-              Job Page
-            </motion.p>
+            <Link to={"/not_avaiable"}>
+              <motion.p
+                custom={1}
+                initial="inital"
+                whileInView="animate"
+                variants={pageVariants}
+                className=" text-xs sm:text-xl font-light"
+              >
+                Register
+              </motion.p>
+            </Link>
+
+            <Link to={"/not_avaiable"}>
+              <motion.p
+                custom={2}
+                initial="inital"
+                whileInView="animate"
+                variants={pageVariants}
+                className=" text-xs sm:text-xl font-light"
+              >
+                Login
+              </motion.p>
+            </Link>
+
+            <Link to={"/not_avaiable"}>
+              <motion.p
+                custom={3}
+                initial="inital"
+                whileInView="animate"
+                variants={pageVariants}
+                className=" text-xs sm:text-xl font-light"
+              >
+                Job Page
+              </motion.p>
+            </Link>
           </div>
         </div>
       </div>
