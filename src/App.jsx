@@ -25,7 +25,7 @@ function App() {
       const timer = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("hasLoadedBefore", "true");
-      }, 6000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     } else {

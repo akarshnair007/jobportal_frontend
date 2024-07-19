@@ -34,7 +34,7 @@ const Login_JobSeeker = () => {
         login(result.data.token);
 
         setTimeout(() => {
-          navigate("/jobseeker_profile");
+          navigate("/jobseeker_page");
         }, 3000);
       } else {
         console.log(result);
