@@ -6,25 +6,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 const JobBox = ({ user, jobs, fetchJobs }) => {
-  const [appliedJobs, setAppliedJobs] = useState(new Set());
+  const [appliedJobs, setAppliedJobs] = useState([]);
 
-  // Fetch applied jobs for the current user
-  const fetchAppliedJobs = useCallback(async () => {
-    if (user && user._id) {
-      try {
-        const result = await GetAppliedJobsAPI(user._id);
-        console.log(`Jobseeker: ${result}`);
-        setAppliedJobs(new Set(result.data));
-      } catch (error) {
-        console.error("Error fetching applied jobs:", error);
-      }
-    }
-  }, [user]);
+  // Fetch applied jobs from local storage
+  const fetchAppliedJobs = useCallback(() => {
+    const savedAppliedJobs =
+      JSON.parse(localStorage.getItem("appliedJobs")) || [];
+    setAppliedJobs(savedAppliedJobs);
+  }, []);
 
-  // Fetch applied jobs on component mount and when user changes
+  // Fetch applied jobs on component mount
   useEffect(() => {
     fetchAppliedJobs();
-  }, [fetchAppliedJobs, user]);
+  }, [fetchAppliedJobs]);
 
   // Handler for applying to a job
   const ApplyHandler = async (e, jobTitle, organizationName) => {
@@ -35,7 +29,7 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
     }
 
     // Check if already applied
-    if (appliedJobs.has(jobTitle)) {
+    if (appliedJobs.includes(jobTitle)) {
       toast.warning("You have already applied to this job.");
       return;
     }
@@ -45,12 +39,20 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
 
     if (result.status === 200) {
       toast.success("You have applied to this post");
-      setAppliedJobs(new Set([...appliedJobs, jobTitle]));
+      const updatedAppliedJobs = [...appliedJobs, jobTitle];
+      setAppliedJobs(updatedAppliedJobs);
+      localStorage.setItem("appliedJobs", JSON.stringify(updatedAppliedJobs)); // Save to local storage
     } else if (result.status === 403) {
       toast.warning("You are not allowed to apply for this job");
     } else {
       toast.error("Something error occurred");
     }
+  };
+
+  // Refresh jobs and ensure local storage is updated
+  const refreshJobs = async () => {
+    await fetchJobs();
+    localStorage.setItem("appliedJobs", JSON.stringify(appliedJobs)); // Ensure local storage is up to date
   };
 
   return (
@@ -60,7 +62,7 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
           className="bg-slate-500 text-white py-2 px-4 rounded hover:bg-slate-600"
           onClick={(e) => {
             e.preventDefault();
-            fetchJobs();
+            refreshJobs();
           }}
         >
           Refresh Jobs{" "}
@@ -87,7 +89,7 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
                 For {item.experience}
               </h6>
             </div>
-            {appliedJobs.has(item.title) ? (
+            {appliedJobs.includes(item.title) ? (
               <button
                 className="px-5 py-2 bg-slate-800 rounded-3xl text-white"
                 disabled

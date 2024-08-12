@@ -35,7 +35,7 @@ const JobSeeker_Register = () => {
         });
         setTimeout(() => {
           navigate("/job_seeker_login");
-        }, 4000);
+        }, 3000);
       } else {
         toast.warning("Something went wrong");
       }

@@ -33,7 +33,7 @@ const Recruiter_Register = () => {
         toast.success("Registration Successfull");
         setTimeout(() => {
           navigate("/recruiter_login");
-        }, 4000);
+        }, 3000);
       } else {
         console.log(result);
         toast.warning("Something went wrong");

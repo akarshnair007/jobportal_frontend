@@ -8,7 +8,7 @@ import {
   getAllJobSeekersAPI,
   getAllRecruitersAPI,
 } from "../Services/AllApi";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Admin_Page = () => {
   const [jobSeeker, setJobSeeker] = useState([]);
@@ -31,7 +31,9 @@ const Admin_Page = () => {
     if (result.status == 200) {
       console.log(result);
 
-      toast.success("User has been deleted Successfully");
+      setTimeout(() => {
+        toast.success("Job Seeker has been deleted Successfully");
+      }, 2000);
       fetchUsers();
     } else {
       console.log(result);
@@ -47,8 +49,9 @@ const Admin_Page = () => {
     const result = await deleteRecruiterAPI(reqBody);
     if (result.status == 200) {
       console.log(result);
-
-      toast.success("Recruiter has been deleted Successfully");
+      setTimeout(() => {
+        toast.success("Recruiter has been deleted Successfully");
+      }, 2000);
       fetchUsers();
     } else {
       console.log(result);
@@ -124,7 +127,7 @@ const Admin_Page = () => {
             <tbody>
               {jobSeeker.length > 0 ? (
                 jobSeeker.map((item) => (
-                  <tr key={item.id}>
+                  <tr key={item._id}>
                     <td className="py-2 px-4 border-b">{item.username}</td>
                     <td className="py-2 px-4 border-b">{item.email}</td>
                     <td className="py-2 px-4 border-b text-center">
@@ -172,7 +175,7 @@ const Admin_Page = () => {
             <tbody>
               {recruiter.length > 0 ? (
                 recruiter.map((item) => (
-                  <tr key={item.id}>
+                  <tr key={item._id}>
                     <td className="py-2 px-4 border-b">{item.username}</td>
                     <td className="py-2 px-4 border-b">{item.email}</td>
                     <td className="py-2 px-4 border-b">
@@ -202,6 +205,7 @@ const Admin_Page = () => {
         </div>
       </div>
       <Footer />
+      <ToastContainer theme="dark" autoClose={2000} position="top-right" />
     </div>
   );
 };
