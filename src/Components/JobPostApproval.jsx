@@ -4,7 +4,7 @@ import {
   RejectJobPostsAPI,
   getJobPostAPI,
 } from "../Services/AllApi";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
@@ -34,6 +34,7 @@ const JobPostApproval = () => {
       const result = await AcceptJobPostsAPI({ jobPostId });
       if (result.status === 200) {
         toast.success("Job Post has been accepted");
+
         fetchJobs(); // Refresh the list after accepting
       } else {
         toast.error("Something went wrong");
@@ -104,7 +105,7 @@ const JobPostApproval = () => {
           No Job Application is there to verify
         </p>
       )}
-      <ToastContainer theme="dark" autoClose={2000} position="top-right" />
+      {/* <ToastContainer theme="dark" autoClose={2000} position="top-right" /> */}
     </div>
   );
 };

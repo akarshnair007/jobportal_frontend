@@ -60,36 +60,44 @@ const Footer = () => {
             Follow us on
           </motion.h3>
           <div className="flex flex-col gap-5">
-            <motion.div
-              custom={1}
-              initial="inital"
-              whileInView="animate"
-              variants={iconVariants}
-              className="div"
-            >
-              {" "}
-              <FontAwesomeIcon icon={faInstagram} className="fa-lg	" />{" "}
-            </motion.div>
-            <motion.div
-              custom={2}
-              initial="inital"
-              whileInView="animate"
-              variants={iconVariants}
-              className="div"
-            >
-              {" "}
-              <FontAwesomeIcon icon={faXTwitter} className="fa-md	" />{" "}
-            </motion.div>
-            <motion.div
-              custom={3}
-              initial="inital"
-              whileInView="animate"
-              variants={iconVariants}
-              className="div"
-            >
-              {" "}
-              <FontAwesomeIcon icon={faFacebook} className="fa-md	" />
-            </motion.div>
+            <Link to={"/not_avaiable"}>
+              <motion.div
+                custom={1}
+                initial="inital"
+                whileInView="animate"
+                variants={iconVariants}
+                className="div"
+              >
+                {" "}
+                <FontAwesomeIcon icon={faInstagram} className="fa-lg	" />{" "}
+              </motion.div>
+            </Link>
+
+            <Link to={"/not_avaiable"}>
+              <motion.div
+                custom={2}
+                initial="inital"
+                whileInView="animate"
+                variants={iconVariants}
+                className="div"
+              >
+                {" "}
+                <FontAwesomeIcon icon={faXTwitter} className="fa-md	" />{" "}
+              </motion.div>
+            </Link>
+
+            <Link to={"/not_avaiable"}>
+              <motion.div
+                custom={3}
+                initial="inital"
+                whileInView="animate"
+                variants={iconVariants}
+                className="div"
+              >
+                {" "}
+                <FontAwesomeIcon icon={faFacebook} className="fa-md	" />
+              </motion.div>
+            </Link>
           </div>
         </div>
         <div className="text-center">
@@ -102,7 +110,7 @@ const Footer = () => {
             Pages
           </motion.h3>
           <div className="space-y-2">
-            <Link to={"/not_avaiable"}>
+            <Link to={"/login_register"}>
               <motion.p
                 custom={1}
                 initial="inital"
@@ -114,7 +122,7 @@ const Footer = () => {
               </motion.p>
             </Link>
 
-            <Link to={"/not_avaiable"}>
+            <Link to={"/login_register"}>
               <motion.p
                 custom={2}
                 initial="inital"
@@ -126,7 +134,7 @@ const Footer = () => {
               </motion.p>
             </Link>
 
-            <Link to={"/not_avaiable"}>
+            <Link to={"/login_register"}>
               <motion.p
                 custom={3}
                 initial="inital"

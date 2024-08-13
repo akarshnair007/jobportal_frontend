@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ApplyJobAPI, GetAppliedJobsAPI } from "../Services/AllApi";
+import { ApplyJobAPI } from "../Services/AllApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,15 +7,18 @@ import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 const JobBox = ({ user, jobs, fetchJobs }) => {
   const [appliedJobs, setAppliedJobs] = useState([]);
+  const userEmail = user.email || "";
 
   // Fetch applied jobs from local storage
   const fetchAppliedJobs = useCallback(() => {
-    const savedAppliedJobs =
-      JSON.parse(localStorage.getItem("appliedJobs")) || [];
-    setAppliedJobs(savedAppliedJobs);
-  }, []);
+    if (!userEmail) return; // Ensure user email is available
 
-  // Fetch applied jobs on component mount
+    const savedData = JSON.parse(localStorage.getItem("appliedJobs")) || {};
+    const userAppliedJobs = savedData[userEmail] || [];
+    setAppliedJobs(userAppliedJobs);
+  }, [userEmail]);
+
+  // Fetch applied jobs on component mount or when user changes
   useEffect(() => {
     fetchAppliedJobs();
   }, [fetchAppliedJobs]);
@@ -41,7 +44,11 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
       toast.success("You have applied to this post");
       const updatedAppliedJobs = [...appliedJobs, jobTitle];
       setAppliedJobs(updatedAppliedJobs);
-      localStorage.setItem("appliedJobs", JSON.stringify(updatedAppliedJobs)); // Save to local storage
+
+      // Save to local storage with user email as the key
+      const savedData = JSON.parse(localStorage.getItem("appliedJobs")) || {};
+      savedData[userEmail] = updatedAppliedJobs;
+      localStorage.setItem("appliedJobs", JSON.stringify(savedData));
     } else if (result.status === 403) {
       toast.warning("You are not allowed to apply for this job");
     } else {
@@ -52,7 +59,7 @@ const JobBox = ({ user, jobs, fetchJobs }) => {
   // Refresh jobs and ensure local storage is updated
   const refreshJobs = async () => {
     await fetchJobs();
-    localStorage.setItem("appliedJobs", JSON.stringify(appliedJobs)); // Ensure local storage is up to date
+    fetchAppliedJobs(); // Ensure applied jobs are re-fetched to sync state
   };
 
   return (
